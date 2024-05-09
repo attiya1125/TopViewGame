@@ -17,8 +17,8 @@ public class PlayerInputController : TopDownContoller
     public void OnLook(InputValue value)
     {
         Vector2 newAim = value.Get<Vector2>();
-        Vector2 worldPos = camera.ScreenToWorldPoint(newAim);
-        newAim = (worldPos - (Vector2)transform.position).normalized;
+        Vector2 worldPos = camera.ScreenToWorldPoint(newAim); // 카메라의 범위 월드 좌표
+        newAim = (worldPos - (Vector2)transform.position).normalized; 
 
         CallLookEvent(newAim);
     }
