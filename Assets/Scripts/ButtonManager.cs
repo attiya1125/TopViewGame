@@ -7,15 +7,9 @@ using UnityEngine.UI;
 public class ButtonManager : MonoBehaviour
 {
     public Button button;
-    public ChatManager chatManager;
     public void StartButton()
     {
         SceneManager.LoadScene("MainScene");
-    }
-    public void StartedChat()
-    {
-        chatManager = FindObjectOfType<ChatManager>();
-        chatManager.StartChat();
     }
     public void ButtonOff()
     {

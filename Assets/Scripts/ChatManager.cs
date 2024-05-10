@@ -5,14 +5,17 @@ using UnityEngine.UI;
 
 public class ChatManager : MonoBehaviour
 {
-    public ButtonManager buttonManager;
+    public TopDownMovement topDownMovement;
+    public Animator animator;
 
     public Text ChatText;
     public Text CharacterName;
-    public string writerText = "";
-    private bool spacePressed = false;
-    public float textSpeed = 0.05f;
     public GameObject ChatBox;
+
+    public string writerText = "";
+    public float textSpeed = 0.05f;
+
+    private bool spacePressed = false;
 
     IEnumerator NormalChat(string narrator, string narration) // 화자와 대사
     {
@@ -46,12 +49,16 @@ public class ChatManager : MonoBehaviour
 
         yield return StartCoroutine(NormalChat(CharacterName.text = PlayerPrefs.GetString("TextMeshValue"), "zzzxc"));
         yield return StartCoroutine(WaitForSpacePressed());
+
         ChatBox.SetActive(false);
+
         FixedSpeed();
+        animator.speed = 1f;
     }
 
     public void StartChat()
     {
+        animator.speed = 0f;
         ChatBox.SetActive(true);
         StartCoroutine(WriteText());
     }
@@ -63,9 +70,8 @@ public class ChatManager : MonoBehaviour
             spacePressed = true;
         }
     }
-    public void FixedSpeed()
+    private void FixedSpeed()
     {
-        TopDownMovement topDownMovement = GetComponent<TopDownMovement>();
         topDownMovement.takeSpeed = 5;
     }
 }

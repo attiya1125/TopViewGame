@@ -5,17 +5,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
-    public SetPlayerName SetPlayerName;
-    public string name;
-    public void Awake()
+    public ChatManager chatManager;
+    public void Start()
     {
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-    public void TakeName(string playerName)
-    {
-        name = playerName;
-        SetPlayerName = GetComponent<SetPlayerName>();
+        chatManager.StartChat();
     }
 }
