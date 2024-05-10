@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TopDownMovement : MonoBehaviour
 {
+    public int takeSpeed;
     private TopDownContoller contoller;
     private Rigidbody2D movemontRigidbody;
     private Vector2 movementDirection = Vector2.zero; // 이동안하고 있으니 zero
@@ -30,7 +31,7 @@ public class TopDownMovement : MonoBehaviour
 
     private void ApplyMovement(Vector2 direction)
     {
-        direction = direction * 0;
+        direction = direction * takeSpeed;
         movemontRigidbody.velocity = direction;
     }
 }

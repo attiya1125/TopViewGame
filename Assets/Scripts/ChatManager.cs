@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class ChatManager : MonoBehaviour
 {
+    public ButtonManager buttonManager;
+
     public Text ChatText;
     public Text CharacterName;
     public string writerText = "";
     private bool spacePressed = false;
     public float textSpeed = 0.05f;
+    public GameObject ChatBox;
 
     IEnumerator NormalChat(string narrator, string narration) // 화자와 대사
     {
@@ -35,15 +38,24 @@ public class ChatManager : MonoBehaviour
 
     IEnumerator WriteText()
     {
-        yield return StartCoroutine(NormalChat(CharacterName.text = PlayerPrefs.GetString("TextMeshValue"),"안녕하세요"));
+        yield return StartCoroutine(NormalChat(CharacterName.text = PlayerPrefs.GetString("TextMeshValue"), "안녕하세요"));
         yield return StartCoroutine(WaitForSpacePressed());
+
         yield return StartCoroutine(NormalChat(CharacterName.text = PlayerPrefs.GetString("TextMeshValue"), "반갑습니다"));
+        yield return StartCoroutine(WaitForSpacePressed());
+
+        yield return StartCoroutine(NormalChat(CharacterName.text = PlayerPrefs.GetString("TextMeshValue"), "zzzxc"));
+        yield return StartCoroutine(WaitForSpacePressed());
+        ChatBox.SetActive(false);
+        FixedSpeed();
     }
 
     public void StartChat()
     {
+        ChatBox.SetActive(true);
         StartCoroutine(WriteText());
     }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -51,5 +63,9 @@ public class ChatManager : MonoBehaviour
             spacePressed = true;
         }
     }
-
+    public void FixedSpeed()
+    {
+        TopDownMovement topDownMovement = GetComponent<TopDownMovement>();
+        topDownMovement.takeSpeed = 5;
+    }
 }
