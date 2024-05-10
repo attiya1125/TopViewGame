@@ -33,7 +33,6 @@ public class PlayerInputName : MonoBehaviour
     public void WriteName()
     {
         PlayerPrefs.SetString("TextMeshValue", playerInputName.text);
-        setPlayerName.SetName();
     }
     public void ChangePlayerNameInput()
     {
@@ -46,6 +45,7 @@ public class PlayerInputName : MonoBehaviour
             WriteName();
             newNamePanel.SetActive(false);
             topDownMovement.takeSpeed = 5;
+            setPlayerName.SetName();
         }
     }
 }
