@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public ChatManager chatManager;
+    public SetPlayerName setPlayerName;
     public void Start()
     {
         chatManager.StartChat();
+        setPlayerName.SetName();
     }
 }

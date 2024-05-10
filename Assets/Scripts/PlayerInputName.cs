@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class PlayerInputName : MonoBehaviour
 {
+    public TopDownMovement topDownMovement;
+    public SetPlayerName setPlayerName;
+    public GameObject newNamePanel;
     public static InputField playerInputName;
     public int textLength = 2;
     private void Awake()
@@ -24,11 +27,25 @@ public class PlayerInputName : MonoBehaviour
         }
         else // 2~10자 이내일경우 WriteName 실행
         {
-            WriteName(); 
+            WriteName();
         }
     }
     public void WriteName()
     {
         PlayerPrefs.SetString("TextMeshValue", playerInputName.text);
+        setPlayerName.SetName();
+    }
+    public void ChangePlayerNameInput()
+    {
+        if (playerInputName.text.Length < textLength) // 2자보다 작게 입력시 입력 필드 지우기
+        {
+            playerInputName.text = "";
+        }
+        else // 2~10자 이내일경우 WriteName 실행
+        {
+            WriteName();
+            newNamePanel.SetActive(false);
+            topDownMovement.takeSpeed = 5;
+        }
     }
 }

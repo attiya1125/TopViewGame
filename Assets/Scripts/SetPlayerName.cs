@@ -3,7 +3,7 @@
 public class SetPlayerName : MonoBehaviour
 {
     public TextMesh myName;
-    public void Start()
+    public void SetName()
     {
         string textValue = PlayerPrefs.GetString("TextMeshValue");
         myName.text = textValue;
