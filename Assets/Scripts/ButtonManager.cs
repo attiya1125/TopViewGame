@@ -8,12 +8,14 @@ public class ButtonManager : MonoBehaviour
 {
     public TopDownMovement topDownMovement;
 
-    public GameObject sibeBar;
+    public GameObject sideBar;
     public GameObject meruBar;
     public GameObject changeNameBtn;
     public GameObject x_Btn;
     public GameObject hambugar;
     public GameObject newNamePanel;
+
+    public bool isOn = true;
 
     public Button button;
 
@@ -31,7 +33,7 @@ public class ButtonManager : MonoBehaviour
     }
     public void CloseTabBtn()
     {
-        sibeBar.SetActive(false);
+        sideBar.SetActive(false);
         meruBar.SetActive(false);
         changeNameBtn.SetActive(false);
         x_Btn.SetActive(false);
@@ -40,7 +42,7 @@ public class ButtonManager : MonoBehaviour
     }
     public void OnpenTabBtn()
     {
-        sibeBar.SetActive(true);
+        sideBar.SetActive(true);
         meruBar.SetActive(true);
         changeNameBtn.SetActive(true);
         x_Btn.SetActive(true);
@@ -52,5 +54,18 @@ public class ButtonManager : MonoBehaviour
     {
         topDownMovement.takeSpeed = 0;
         newNamePanel.SetActive(true);
+    }
+
+    public void SideBar()
+    {
+        if (isOn)
+        {
+            sideBar.SetActive(false);
+        }
+        else
+        {
+            sideBar.SetActive (true);
+        }
+        isOn = !isOn;
     }
 }
