@@ -68,4 +68,8 @@ public class ButtonManager : MonoBehaviour
         }
         isOn = !isOn;
     }
+    public void InHouse()
+    {
+        SceneManager.LoadScene("HouseScene");
+    }
 }
