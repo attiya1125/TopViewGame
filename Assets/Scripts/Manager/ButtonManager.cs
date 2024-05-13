@@ -19,19 +19,17 @@ public class ButtonManager : MonoBehaviour
 
     public bool isOn = true;
 
-    public Button button;
-
     private void Awake()
     {
         instance = this;
     }
 
-    public void StartButton()
+    public void StartButton() // 메인씬으로 가는버튼
     {
         SceneManager.LoadScene("MainScene");
     }
 
-    public void CloseTabBtn()
+    public void CloseTabBtn() // 텝 닫는 버튼
     {
         sideBar.SetActive(false);
         meruBar.SetActive(false);
@@ -40,7 +38,7 @@ public class ButtonManager : MonoBehaviour
 
         hambugar.SetActive(true);
     }
-    public void OnpenTabBtn()
+    public void OnpenTabBtn()  // 텝 여는 버튼
     {
         sideBar.SetActive(true);
         meruBar.SetActive(true);
@@ -50,13 +48,13 @@ public class ButtonManager : MonoBehaviour
         hambugar.SetActive(false);
     }
 
-    public void NewName()
+    public void NewName()     // 새 이름 만들때 판넬 나오게 하는 버튼
     {
         topDownMovement.takeSpeed = 0;
         newNamePanel.SetActive(true);
     }
 
-    public void SideBar()
+    public void SideBar() // 사이드바 출력
     {
         if (isOn)
         {
@@ -68,12 +66,12 @@ public class ButtonManager : MonoBehaviour
         }
         isOn = !isOn;
     }
-    public void InHouse()
+    public void InHouse()  // 집 들어가는 씬
     {
         SceneManager.LoadScene("HouseScene");
     }
 
-    public void PeopleChatStart()
+    public void PeopleChatStart()  // 집안 사람이랑 대화시작
     {
         ChatManager.instance.PeopleChat();
     }

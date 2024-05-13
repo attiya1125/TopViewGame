@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - MoveNextScene
+  - User
   layers:
   - Default
   - TransparentFX

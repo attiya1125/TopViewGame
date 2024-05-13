@@ -10,7 +10,7 @@ public class LootAtMouse : MonoBehaviour
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // 캐릭터의 Transform 가져오기
         objectTransform = transform; // 객체의 Transform 가져오기
-        textMashTransform = text.transform;
+        textMashTransform = text.transform; // 위에 이름 택스트 위치 가져오기
     }
     private void FixedUpdate()
     {
@@ -25,6 +25,7 @@ public class LootAtMouse : MonoBehaviour
             // 캐릭터의 오른쪽에 있는 경우, 객체의 회전 값을 초기화하여 마우스 방향을 바라보도록 설정
             objectTransform.rotation = Quaternion.identity;
         }
+        // 위에 이름 텍스트는 안따라오도록 설정
         textMashTransform.rotation = Quaternion.identity;
     }
 }

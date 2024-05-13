@@ -25,6 +25,6 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        userName.text = PlayerPrefs.GetString("TextMeshValue");
+        userName.text = PlayerPrefs.GetString("TextMeshValue"); // 플레이어 이름이 변경될때마다 실시간으로 변경
     }
 }

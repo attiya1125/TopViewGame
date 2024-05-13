@@ -6,25 +6,24 @@ using UnityEngine.UI;
 public class NewPlayer : MonoBehaviour
 {
     public static NewPlayer instance;
-    public Text User;
-    public Text uiText;
+    public Text user1;
 
     public void Awake()
     {
         instance = this;
         // Canvas 안에 있는 Text UI 요소를 찾음
-        uiText = transform.GetChild(2).GetChild(2).GetComponent<Text>();
+        user1 = transform.GetChild(2).GetChild(2).GetComponent<Text>();
     }
     // UI에 텍스트를 생성하는 함수
     public void CreateUIText(string message)
     {
-        if (uiText != null)
+        if (user1 != null)
         {
-            uiText.text = message;
+            user1.text = message;
         }
         else
         {
-
+            Destroy(gameObject);
         }
     }
 }
