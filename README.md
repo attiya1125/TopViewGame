@@ -32,3 +32,4 @@
   // 기능을 구현하다 중간에 빠진 기능이 많습니다 허허;
 
 ## 구성 시나리오
+https://github.com/attiya1125/TopViewGame/blob/main/progress.jpg
