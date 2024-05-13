@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TopDownContoller : MonoBehaviour
+public class NewPlayer : MonoBehaviour
 {
-    public event Action<Vector2> OnMoveEvent; 
+    public GameObject receivedObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +15,5 @@ public class TopDownContoller : MonoBehaviour
     void Update()
     {
         
-    }
-    public void CallMoveEvent(Vector2 direction)
-    {
-        OnMoveEvent?.Invoke(direction);
     }
 }

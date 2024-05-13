@@ -5,14 +5,19 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     public ChatManager chatManager;
     public SetPlayerName setPlayerName;
 
     public Text userName;
 
-    public void Awake()
+    public GameObject Player;
+
+    private void Awake()
     {
+        instance = this;
     }
+
     public void Start()
     {
         chatManager.StartChat();

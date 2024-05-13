@@ -11,11 +11,6 @@ public class TopDownAimController : MonoBehaviour
     {
         contoller = GetComponent<TopDownContoller>();
     }
-    private void Start()
-    {
-        contoller.OnLookEvent += OnAim;
-    }
-
     private void OnAim(Vector2 direction)
     {
         RotateArm(direction);

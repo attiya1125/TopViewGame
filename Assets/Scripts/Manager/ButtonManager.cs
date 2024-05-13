@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
+    public static ButtonManager instance;
     public TopDownMovement topDownMovement;
+    public ChatManager chatManager;
 
     public GameObject sideBar;
     public GameObject meruBar;
@@ -19,18 +21,16 @@ public class ButtonManager : MonoBehaviour
 
     public Button button;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     public void StartButton()
     {
         SceneManager.LoadScene("MainScene");
     }
-    public void ButtonOff()
-    {
-        button.interactable = false;
-    }
-    public void ButtonOn()
-    {
-        button.interactable = true;
-    }
+
     public void CloseTabBtn()
     {
         sideBar.SetActive(false);
@@ -71,5 +71,10 @@ public class ButtonManager : MonoBehaviour
     public void InHouse()
     {
         SceneManager.LoadScene("HouseScene");
+    }
+
+    public void PeopleChatStart()
+    {
+        ChatManager.instance.PeopleChat();
     }
 }

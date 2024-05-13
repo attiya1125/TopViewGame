@@ -6,13 +6,13 @@ public class LootAtMouse : MonoBehaviour
     private Transform playerTransform;
     private Transform objectTransform;
     private Transform textMashTransform;
-    void Start()
+    private void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // 캐릭터의 Transform 가져오기
         objectTransform = transform; // 객체의 Transform 가져오기
         textMashTransform = text.transform;
     }
-    void Update()
+    private void FixedUpdate()
     {
         // 마우스 위치와 캐릭터 위치를 비교하여 마우스가 캐릭터의 왼쪽에 있는지 확인
         if (Input.mousePosition.x < Camera.main.WorldToScreenPoint(playerTransform.position).x)
