@@ -3,14 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class SceneInitializer : MonoBehaviour
+public class SceneMoveManager : MonoBehaviour
 {
     public static GameObject[] objectMove;
-    public string objectTag = "MoveNextScene";
+    public string[] objectTag = { "MoveNextScene", "Player", "MainCamera" };
     public void Start()
     {
-        objectMove = GameObject.FindGameObjectsWithTag("MoveNextScene");
-        objectMove = GameObject.FindGameObjectsWithTag("Player");
-        objectMove = GameObject.FindGameObjectsWithTag("MainCamera");
+        List<GameObject> objectsToMove = new List<GameObject>();
+
+        foreach (string tag in objectTag)
+        {
+            Debug.Log(tag);
+            GameObject[] objectWithTags = GameObject.FindGameObjectsWithTag(tag);
+            objectsToMove.AddRange(objectWithTags);
+        }
+
+        objectMove = objectsToMove.ToArray();
+
+        foreach (GameObject obj in objectMove)
+        {
+            DontDestroyOnLoad(obj);
+        }
     }
 }

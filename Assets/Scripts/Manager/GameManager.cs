@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance;
     public ChatManager chatManager;
     public SetPlayerName setPlayerName;
 
@@ -13,7 +12,6 @@ public class GameManager : MonoBehaviour
 
     public void Awake()
     {
-        instance = this;
     }
     public void Start()
     {
@@ -23,6 +21,5 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         userName.text = PlayerPrefs.GetString("TextMeshValue");
-        DontDestroyOnLoad(instance.gameObject);
     }
 }
