@@ -10,12 +10,10 @@ public class SceneInitilzar : MonoBehaviour
     public GameObject a;
     void Start()
     {
-
         foreach (GameObject obj in SceneMoveManager.objectMoves)
         {
             obj.transform.position = Vector3.zero;
         }
         SceneMoveManager.objectMoves = null;
-
     }
 }

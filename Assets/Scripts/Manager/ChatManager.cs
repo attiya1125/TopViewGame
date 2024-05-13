@@ -16,7 +16,7 @@ public class ChatManager : MonoBehaviour
     public GameObject chatBar;
 
     public string writerText = "";
-    public float textSpeed = 0.05f;
+    public float textSpeed = 0.1f;
 
     private bool spacePressed = false;
 
@@ -48,13 +48,27 @@ public class ChatManager : MonoBehaviour
 
     IEnumerator WriteText()
     {
-        yield return StartCoroutine(NormalChat(CharacterName.text = PlayerPrefs.GetString("TextMeshValue"), "안녕하세요"));
+        playerPicture.SetActive(false);
+        yield return StartCoroutine(NormalChat(CharacterName.text = "[System]", "부스럭,,, 부스럭,, "));
+        yield return StartCoroutine(WaitForSpacePressed());
+        playerPicture.SetActive(true);
+
+        yield return StartCoroutine(NormalChat(CharacterName.text = PlayerPrefs.GetString("TextMeshValue"), "으윽,, 여긴 어디지,,? "));
         yield return StartCoroutine(WaitForSpacePressed());
 
-        yield return StartCoroutine(NormalChat(CharacterName.text = PlayerPrefs.GetString("TextMeshValue"), "반갑습니다"));
+        yield return StartCoroutine(NormalChat(CharacterName.text = PlayerPrefs.GetString("TextMeshValue"), "나 분명,, 집에서 프로젝트 마감을 하고 있었는데,,"));
         yield return StartCoroutine(WaitForSpacePressed());
 
-        yield return StartCoroutine(NormalChat(CharacterName.text = PlayerPrefs.GetString("TextMeshValue"), "zzzxc"));
+        yield return StartCoroutine(NormalChat(CharacterName.text = PlayerPrefs.GetString("TextMeshValue"), "정신을 차려보니 알 수 없는 곳에 있어,,"));
+        yield return StartCoroutine(WaitForSpacePressed());
+
+        yield return StartCoroutine(NormalChat(CharacterName.text = PlayerPrefs.GetString("TextMeshValue"), "너무 열심히 해서 쓰려졌나,,?"));
+        yield return StartCoroutine(WaitForSpacePressed());
+
+        yield return StartCoroutine(NormalChat(CharacterName.text = PlayerPrefs.GetString("TextMeshValue"), "앗, 오른쪽에 길이 있어"));
+        yield return StartCoroutine(WaitForSpacePressed());
+
+        yield return StartCoroutine(NormalChat(CharacterName.text = PlayerPrefs.GetString("TextMeshValue"), "일단 길을 따라가보자"));
         yield return StartCoroutine(WaitForSpacePressed());
 
         ChatBox.SetActive(false);
@@ -65,7 +79,7 @@ public class ChatManager : MonoBehaviour
     IEnumerator PeopleText()
     {
         topDownMovement.takeSpeed = 0;
-        yield return StartCoroutine(NormalChat(CharacterName.text = PlayerPrefs.GetString("TextMeshValue"), "asdasdas"));
+        yield return StartCoroutine(NormalChat(CharacterName.text = PlayerPrefs.GetString("TextMeshValue"), "ㅎㅇ"));
         yield return StartCoroutine(WaitForSpacePressed());
 
         yield return StartCoroutine(NormalChat(CharacterName.text = PlayerPrefs.GetString("TextMeshValue"), "asdsadad"));
@@ -87,6 +101,7 @@ public class ChatManager : MonoBehaviour
     }
     public void PeopleChat()
     {
+        NewPlayer.instance.CreateUIText("Unknown");
         ChatBox.SetActive(true);
         StartCoroutine (PeopleText());
     }
